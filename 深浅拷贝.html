@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深浅拷贝</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const obj1={name:'jack',age:'19',hobby:{sports:'pingpong',entertainment:'film'}}
+    const deepClone=(obj)=>{
+        if(typeof obj !=="object"){
+            return obj
+        }
+        const copy={}
+        for(const key in obj){
+            if(obj.hasOwnProperty(key)){
+                copy[key]=deepClone(obj[key])
+            }
+        }
+        return copy
+    }
+    const copyObj=deepClone(obj1)
+    obj1.hobby.sports='basketball'
+    console.log('测试深拷贝成功与否',obj1);
+    console.log('测试深拷贝成功与否',copyObj);
+
+    
+</script>
+</html>
