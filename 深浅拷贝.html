@@ -16,9 +16,8 @@
         }
         const copy={}
         for(const key in obj){
-            if(obj.hasOwnProperty(key)){
-                copy[key]=deepClone(obj[key])
-            }
+             copy[key]=deepClone(obj[key])
+
         }
         return copy
     }
