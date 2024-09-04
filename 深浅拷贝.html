@@ -19,7 +19,7 @@
         }
     }
     //深拷贝1
-    const deepClone1=(obj)=>{
+    const deepClone1= (obj)=>{
         if(typeof obj !== "object"){return obj}
         if(Array.isArray(obj)){
             const copy=[]
@@ -34,14 +34,14 @@
         }
         return copy
     }
-    const diguiCopyObj=deepClone1(obj1)
+    const diguiCopyObj= deepClone1(obj1)
     //深拷贝2
     const jsonCopyObj=JSON.parse(JSON.stringify(obj1))
     //浅拷贝1
     const kuozhanObj={...obj1}
     //浅拷贝2
-    const assignObj=Object.assign({},obj1)
-    //拷贝完后修改属性
+    const assignObj= Object.assign({},obj1)
+    //拷贝完后修改原对象的属性
     obj1.famliy[0]='jason'
     obj1.hobby.sports='football'
     //打印深浅拷贝测试
