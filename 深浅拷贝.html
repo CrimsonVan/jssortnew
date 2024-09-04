@@ -9,23 +9,46 @@
     
 </body>
 <script>
-    const obj1={name:'jack',age:'19',hobby:{sports:'pingpong',entertainment:'film'}}
-    const deepClone=(obj)=>{
-        if(typeof obj !=="object"){
-            return obj
+    //拷贝的对象
+    const obj1={
+        name:undefined,
+        famliy:['bob','frank'],
+        hobby:{
+            sports:'pingpong',
+            entertainment:'film'
+        }
+    }
+    //深拷贝1
+    const deepClone1=(obj)=>{
+        if(typeof obj !== "object"){return obj}
+        if(Array.isArray(obj)){
+            const copy=[]
+            for(let i = 0; i < obj.length; i++){
+                copy.push(deepClone1(obj[i]))
+            }
+            return copy
         }
         const copy={}
-        for(const key in obj){
-             copy[key]=deepClone(obj[key])
-
+        for(let key in obj){
+            copy[key]=deepClone1(obj[key])
         }
         return copy
     }
-    const copyObj=deepClone(obj1)
-    obj1.hobby.sports='basketball'
-    console.log('测试深拷贝成功与否',obj1);
-    console.log('测试深拷贝成功与否',copyObj);
-
-    
+    const diguiCopyObj=deepClone1(obj1)
+    //深拷贝2
+    const jsonCopyObj=JSON.parse(JSON.stringify(obj1))
+    //浅拷贝1
+    const kuozhanObj={...obj1}
+    //浅拷贝2
+    const assignObj=Object.assign({},obj1)
+    //拷贝完后修改属性
+    obj1.famliy[0]='jason'
+    obj1.hobby.sports='football'
+    //打印深浅拷贝测试
+    console.log('修改对象里的对象或数组属性',obj1);
+    console.log('测试深拷贝1',diguiCopyObj);
+    console.log('测试深拷贝2',jsonCopyObj);
+    console.log('测试浅拷贝1',kuozhanObj);
+    console.log('测试浅拷贝2',assignObj);    
 </script>
 </html>
