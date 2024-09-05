@@ -16,22 +16,27 @@
         hobby:{
             sports:'pingpong',
             entertainment:'film'
-        }
+              }
     }
     //深拷贝1
-    const deepClone1= (obj)=>{
-        if(typeof obj !== "object"){return obj}
-        if(Array.isArray(obj)){
-            const copy=[]
-            for(let i = 0; i < obj.length; i++){
-                copy.push(deepClone1(obj[i]))
-            }
-            return copy
+    const deepClone1=(obj)=>{
+        if(obj instanceof Object !== true){
+              return obj
         }
-        const copy={}
+
+        if(obj instanceof Array ){
+           let copy = []
+            for(let i=0;i<obj.length;i++){
+                  copy.push(deepClone1(obj[i]))
+            }
+          return copy
+        }
+
+        let copy ={}
         for(let key in obj){
             copy[key]=deepClone1(obj[key])
         }
+        
         return copy
     }
     const diguiCopyObj= deepClone1(obj1)

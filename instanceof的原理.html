@@ -10,12 +10,19 @@
 </body>
 <script>
     //instanceof的原理
-    
     function Person(name){
-        this.name = name
+        this.name = name,
+        this.changeName=()=>{
+          this.name='Bruce'
+        }
     }
     let newPerson=new Person('jack')
     console.log('测试原型对象=对象原型',newPerson.__proto__===Person.prototype);
     console.log('测试Object的原型对象=Person的对象的对象原型', Person.prototype.__proto__===Object.prototype);
+    console.log('打印使用函数前',newPerson.name);
+    newPerson.changeName()
+    console.log('打印使用函数后',newPerson.name);
+    
+    
 </script>
 </html>
