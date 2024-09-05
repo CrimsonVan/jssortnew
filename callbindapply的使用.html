@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="background-color: aquamarine;display: flex;justify-content: flex-end;align-items: center;">
+        <div   style="width: 40px;height: 40px;background-color: pink;margin-right: 20px;">1</div>
+        <div   style="width: 40px;height: 40px;background-color: pink;margin-right: 20px;">2</div>
+        <div   style="width: 40px;height: 40px;background-color: pink;margin-right: 20px;">3</div>
+    </div>
+</body>
+<script>
+    function eat(a,b){
+        console.log(this.name+'吃了'+a+'和'+b);   
+    }
+
+    let cat ={
+        name:'猫猫'
+    }
+    
+    // eat.apply(cat,['苹果','香蕉'])
+    // eat.call(cat,'苹果','香蕉')
+    eat.bind(cat)('苹果','香蕉')
+    // console.log(eat.bind(cat,'苹果','香蕉'));
+    
+</script>
+</html>
