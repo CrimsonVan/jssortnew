@@ -24,13 +24,15 @@
         // 如果构造函数返回一个对象，则将该对象返回，否则返回步骤1创建的对象
         return typeof result === 'object' ? result : obj;
     }
+    
    //测试手写的的new
     function Person(name) {
         this.name = name;
     }
 
     let p2 = myNew(Person, "自己new出来的小明同学");
-    console.log(p2);
-
+    console.log(p2.name);
+    console.log('验证原型对象等于对象原型',p2.__proto__===Person.prototype);
+    
 </script>
 </html>
