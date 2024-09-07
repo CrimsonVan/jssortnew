@@ -56,7 +56,23 @@ const bubbleSort=(arr)=>{
   }
    return arr
 }
-console.log('打印去重后的冒泡实现',bubbleSort(NewArrTest));
- 
+console.log('打印去重后的冒泡排序实现',bubbleSort(NewArrTest));
+//实现选择排序
+const selectSort=(arr)=>{
+  for (let index = 0; index < arr.length-1; index++) {
+    let minIndex = index;
+    for (let j=index+1 ;j < arr.length;j++) {
+          if(arr[j]<arr[index]){
+            minIndex=j
+          }
+      
+    }
+    [arr[index],arr[minIndex]]=[arr[minIndex],arr[index]]
+    
+  }
+  return arr
+}
+console.log('打印去重后的选择排序实现',selectSort(NewArrTest));
+
 </script>
 </html>
