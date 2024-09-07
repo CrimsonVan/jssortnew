@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="search" class="search">
+    
+</body>
+<script>
+    function debounce(func,wait){
+        let timeout
+        return function(){
+            
+          clearTimeout(timeout)
+          timeout=setTimeout(()=>{
+            const context =this
+            const args = arguments
+              func.apply(this,args)
+              
+          },wait)
+        }
+
+    }
+   const searchFunc=function(){
+    let search =document.querySelector('.search')
+    console.log('测试防抖只打印最后一次搜索内容',search.value);
+    
+   } 
+   const myDebounce=debounce(searchFunc,2000)
+   document.querySelector('.search').addEventListener('input',myDebounce
+)
+</script>
+</html>
