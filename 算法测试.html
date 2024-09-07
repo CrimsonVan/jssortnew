@@ -45,5 +45,18 @@ const insertionSort=(array)=>{
     return array
 }
 console.log('打印去重后的插入排序',insertionSort(NewArrTest));
+//冒泡排序实现
+const bubbleSort=(arr)=>{
+
+  for(let i=0;i<arr.length-1;i++){
+    for(let j=0;j<arr.length-1-i;j++){
+     if(arr[i]>arr[i+1]){[arr[i+1],arr[i]]=[arr[i],arr[i+1]]}
+
+    }
+  }
+   return arr
+}
+console.log('打印去重后的冒泡实现',bubbleSort(NewArrTest));
+ 
 </script>
 </html>
