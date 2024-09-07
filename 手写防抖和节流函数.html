@@ -10,17 +10,23 @@
     
 </body>
 <script>
+  //手写防抖函数
     function debounce(func,wait){
         let timeout
         return function(){
+          // console.log('打印timeout1',timeout);
             
           clearTimeout(timeout)
+          // console.log('打印timeout2',timeout);
+
           timeout=setTimeout(()=>{
             const context =this
             const args = arguments
               func.apply(this,args)
               
           },wait)
+          // console.log('打印timeout3',timeout);
+
         }
 
     }
@@ -29,8 +35,24 @@
     console.log('测试防抖只打印最后一次搜索内容',search.value);
     
    } 
+   //手写节流函数
+   function Throttle(fun,wait){
+    let throttle
+    return function(){
+      let context=this
+      let args=arguments
+      if(!throttle){
+        throttle=true
+        fun.apply(context,args)
+        setTimeout(()=>{
+           return  throttle=false
+        },wait)
+      }
+    }
+   }
    const myDebounce=debounce(searchFunc,2000)
-   document.querySelector('.search').addEventListener('input',myDebounce
+   const myThrottle=Throttle(searchFunc,3000)
+   document.querySelector('.search').addEventListener('input',myThrottle
 )
 </script>
 </html>
