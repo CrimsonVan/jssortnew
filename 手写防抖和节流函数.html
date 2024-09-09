@@ -20,9 +20,8 @@
           // console.log('打印timeout2',timeout);
 
           timeout=setTimeout(()=>{
-            const context =this
-            const args = arguments
-              func.apply(this,args)
+            
+              func.apply(this)
               
           },wait)
           // console.log('打印timeout3',timeout);
@@ -39,11 +38,10 @@
    function Throttle(fun,wait){
     let throttle
     return function(){
-      let context=this
-      let args=arguments
+
       if(!throttle){
         throttle=true
-        fun.apply(context,args)
+        fun.apply(this)
         setTimeout(()=>{
            return  throttle=false
         },wait)

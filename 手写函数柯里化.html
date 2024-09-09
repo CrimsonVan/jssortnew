@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function curry(func){
+        let length=func.length
+        return function curried(...args){
+            if(args.length>=length){
+                console.log('打印参数达到数量后的this',this);
+
+                return func.apply(this,args)
+                
+                
+            }else{
+                return function curried2(...args2){
+                    return curried.apply(this,args.concat(args2))
+                
+                    
+                }
+            }
+        }
+    }
+    const plus=function(a,b,c){
+          console.log('打印plus',a+b+c);
+          
+    }
+    curriedPlus=curry(plus)
+    curriedPlus(1)(1)(1)
+ 
+
+</script>
+</html>
