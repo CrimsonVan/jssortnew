@@ -13,32 +13,22 @@
   //手写防抖函数
     function debounce(func,wait){
         let timeout
-        return function(){
-          // console.log('打印timeout1',timeout);
-            
+        return function(){          
           clearTimeout(timeout)
-          // console.log('打印timeout2',timeout);
-
           timeout=setTimeout(()=>{
-            
               func.apply(this)
-              
           },wait)
-          // console.log('打印timeout3',timeout);
-
         }
-
     }
    const searchFunc=function(){
     let search =document.querySelector('.search')
     console.log('测试防抖只打印最后一次搜索内容',search.value);
-    
    } 
+
    //手写节流函数
    function Throttle(fun,wait){
     let throttle
     return function(){
-
       if(!throttle){
         throttle=true
         fun.apply(this)
@@ -48,9 +38,9 @@
       }
     }
    }
+   
    const myDebounce=debounce(searchFunc,2000)
    const myThrottle=Throttle(searchFunc,3000)
-   document.querySelector('.search').addEventListener('input',myThrottle
-)
+   document.querySelector('.search').addEventListener('input',myThrottle)
 </script>
 </html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const phoneNumReg=/^1[3456789]\d{9}$/
+    console.log('正则验证手机号',phoneNumReg.test("13114209343"));
+    const QQEmailReg=/^[1-9][0-9]{4,10}$/
+    console.log('正则验证QQ号',QQEmailReg.test("2329016850"))
+    const province=/^[云粤沪][A-Z][A-Z0-9]{5}$/
+    console.log('正则验证车牌号',province.test('粤AU9763'));
+    const chinese=/[\u4e00-\u9fa5]/
+    console.log('正则验证汉字',chinese.test('111你好正则'));
+    const data=/^\d{4}[-]\d{1,2}[-]\d{1,2}/
+    console.log('正则验证日期',data.test('1999-1-11'));
+    const number=/^\d+$/
+    console.log('正则验证数字',number.test('11212332'));
+    
+</script>
+</html>

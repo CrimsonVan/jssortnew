@@ -24,6 +24,7 @@
     eat.apply(cat,['苹果','香蕉'])
     eat.call(cat,'苹果','香蕉')
     eat.bind(cat)('苹果','香蕉')
+
     function TimePlus(){
         this.count =1,
         this.addCount=function(){
@@ -36,7 +37,6 @@
     }
     newTime = new TimePlus()
     newTime.addCount()
-    // console.log('打印newTime',newTime);
-    
+  
 </script>
 </html>

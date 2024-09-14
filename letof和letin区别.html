@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const arr=[1,2,3,4]
+    const obj={
+        name:'obj',
+        age:'22',
+        title:'nsj'
+    }
+    for(let key in obj){
+        if(key==='age'){
+            break
+        }
+        console.log('打印对象的letin',obj[key]);      
+    }
+    for(let key in arr){
+        if(key==1){
+        break
+            
+        }
+        console.log('打印数组的letin',arr[key]);      
+    }
+    arr.forEach(item=>{
+        console.log('打印数组的forEach',item);
+        
+    })
+    // try{
+    //   for(let key of arr){
+    //     if (key==2) {
+    //       throw('出错了')
+    //     }
+    //     console.log('打印数组的letof',key);      
+    // } 
+    // }catch{
+    //     console.log('catch了');
+        
+    // }
+    for(let key of arr){
+        if (key==2) {
+        //   throw('出错了')
+         break
+        }
+        console.log('打印数组的letof',key);      
+    }
+    for(let i=0;i<arr.length;i++){
+        if (arr[i]==2) {
+          break
+        }
+        console.log('打印数组的for',arr[i]);    
+    }
+</script>
+</html>
