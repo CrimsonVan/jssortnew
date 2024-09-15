@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    
+   let  arr=[1,2,3,4]
+//foreach的break没有发生在for的循环内,而是发生在回调函数内，所以无法停止
+   Array.prototype.myForEach=function(callbackFunc){
+        for(let i=0;i<this.length;i++){
+            callbackFunc(this[i])
+        }
+   }
+   arr.myForEach(item=>{
+    console.log('测试我的手搓forEach',item);
+   })
+//map的break没有发生在for的循环内,而是发生在回调函数内，所以无法停止
+  Array.prototype.myMap=function(callback){
+    let resultsArr=[]
+    for(let i=0;i<this.length;i++){
+        resultsArr.push(callback(this[i]))
+    }
+    return resultsArr
+  }
+   console.log('测试手搓map', arr.myMap(item=>{
+    return item+1
+   }));
+   
+</script>
+</html>
