@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+const person={
+    name:'lilei'
+}
+function testFunc(a,b){
+
+    console.log(`测试手写${a}方法成功${b}`,this);
+
+}
+Function.prototype.mycall=function(obj,...args){
+         obj.func=this
+         obj.func(...args)
+}
+Function.prototype.myapply=function(obj,args){
+         obj.func=this
+         obj.func(...args)
+}
+Function.prototype.mybind=function(obj){
+        obj.func=this
+        return function(...args){
+         obj.func(...args)
+        }
+}
+testFunc.mycall(person,'call','嘿嘿')
+testFunc.myapply(person,['apply','嘿嘿'])
+testFunc.mybind(person)('bind','嘿嘿')
+
+
+
+    </script>
+</body>
+</html>
