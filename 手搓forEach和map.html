@@ -17,7 +17,12 @@
             callbackFunc(this[i])
         }
    }
-   arr.myForEach(item=>{
+   Array.prototype.myForEach2=function(func){
+      for(let i=0;i<this.length;i++){
+        func(this[i])
+      }
+   }
+   arr.myForEach2(item=>{
     console.log('测试我的手搓forEach',item);
    })
 //map的break没有发生在for的循环内,而是发生在回调函数内，所以无法停止
@@ -28,7 +33,14 @@
     }
     return resultsArr
   }
-   console.log('测试手搓map', arr.myMap(item=>{
+  Array.prototype.myMap2=function(func){
+    let arr=[]
+    for(let i=0;i<this.length;i++){
+      arr.push(func(this[i]))
+    }
+    return arr
+  }
+  console.log('测试手搓map', arr.myMap2(item=>{
     return item+1
    }));
    

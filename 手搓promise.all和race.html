@@ -30,6 +30,7 @@
             }
            })
     }   
+    
     myPromiseAll([promise1, promise2, promise3]).then(result=>{
        console.log('测试我的手搓promiseAll',result);
     })
@@ -39,8 +40,8 @@
                     promise.then(res=>{
                         resolve(res)
                     }).catch((error) => {
-        reject(error);
-       });
+                          reject(error);
+                    });
                 }
               });
             }

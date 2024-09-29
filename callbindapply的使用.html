@@ -16,22 +16,18 @@
     function eat(a,b){
         console.log(this.name+'吃了'+a+'和'+b);   
     }
-
     let cat ={
         name:'猫猫'
     }
-    
     eat.apply(cat,['苹果','香蕉'])
     eat.call(cat,'苹果','香蕉')
     eat.bind(cat)('苹果','香蕉')
-
     function TimePlus(){
         this.count =1,
         this.addCount=function(){
             setTimeout(()=>{
                this.count++
-               console.log('打印count',this.count);
-               
+               console.log('打印count',this.count);             
         },1000)
         } 
     }

@@ -17,7 +17,6 @@ let inp=document.querySelector('.input')
 let ws
 document.querySelector('.connect').addEventListener('click',()=>{
     ws = new WebSocket("ws://localhost:9998")
-
     ws.onopen = () => {
         console.log("websocket链接成功");
 

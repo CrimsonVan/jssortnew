@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+   //1.利用遍历和indexof
+    const arr=[1,4,9,0,3,2,72,2,2,undefined,null,undefined,null,NaN,NaN]
+    function removeSame(arr){
+          let arr1=[]
+          arr.forEach(item => {
+            if(arr1.indexOf(item)===-1){
+                arr1.push(item)
+            }
+           });
+          return arr1 
+    }
+    Array.prototype.unique=function(){
+        let  map=new Map()
+        let result=[]
+        for(let item of this){
+            if(!map.has(item)){
+                map.set(item,true)
+                result.push(item)
+            }
+
+        }
+        return result
+    }
+    console.log('打印测试数组去重',removeSame(arr));
+    console.log('打印测试挂载到原型上的方法数组去重',arr.unique());
+
+
+    //2.利用遍历和map.has
+    function removeSame2(arr){
+        const map=new Map()
+        const arr1=[]
+        arr.forEach((item)=>{
+           if(!map.has(item)){
+            map.set(item,true)
+            arr1.push(item)
+           }
+        })
+        return arr1
+    }
+    console.log('打印测试map数组去重',removeSame2(arr));
+</script>
+</html>

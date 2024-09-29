@@ -11,6 +11,7 @@
 <script>
 //排序所用数组  
 let NewArrTest=[2,1,3,6,2,1,8,9,1,5,7,8]
+
 //快速排序实现  
 const quickSort=(arr)=>{
    if(arr.length<2){
@@ -20,38 +21,60 @@ const quickSort=(arr)=>{
    let leftArr=[]
    let rightArr=[]
    for (let i = 1; i < arr.length; i++) {
-         arr[i]>pivot?rightArr.push(arr[i]):leftArr.push(arr[i])
-           
-         }
-  return quickSort(leftArr).concat([pivot],quickSort(rightArr))
-
+      arr[i] > pivot ? rightArr.push(arr[i]) : leftArr.push(arr[i])     
+   }
+   return quickSort(leftArr).concat([pivot],quickSort(rightArr))
+ }
+const quickSort2=(arr)=>{
+  if(arr.length<2){
+    return arr
   }
-console.log('打印快速排序',quickSort(NewArrTest));
-//插入排序实现  
-const insertionSort=(array)=>{
-    for (let index = 1; index < array.length; index++) {
-         for(let j=index-1;j>=0;j--){
-          if(array[j]>array[j+1]){
-            [array[j],array[j+1]]=[array[j+1],array[j]]
-          }
-         }
-      
-    }
-    return array
+  let pivot=arr[0]
+  let left=[]
+  let right=[]
+  for(let i=1;i<arr.length;i++){
+    pivot>arr[i] ? left.push(arr[i]) : right.push(arr[i])
+  }
+  return quickSort2(left).concat([pivot],quickSort2(right))
+  
 }
-console.log('打印插入排序',insertionSort(NewArrTest));
+console.log('打印快速排序',quickSort2(NewArrTest));
+
+ //插入排序实现  
+const insertionSort2=(arr)=>{
+  for(let i=1;i<arr.length;i++){
+    for(let j=i-1;j>=0;j--){
+      if(arr[j]>arr[j+1]){
+        [arr[j],arr[j+1]]=[arr[j+1],arr[j]]
+      }
+    }
+  }
+  return arr
+
+}
+console.log('打印插入排序',insertionSort2(NewArrTest));
+
 //冒泡排序实现
 const bubbleSort=(arr)=>{
-
   for(let i=0;i<arr.length-1;i++){
     for(let j=0;j<arr.length-1-i;j++){
      if(arr[j]>arr[j+1]){[arr[j+1],arr[j]]=[arr[j],arr[j+1]]}
-
     }
   }
    return arr
 }
-console.log('打印冒泡排序',bubbleSort(NewArrTest));
+const bubbleSort2=(arr)=>{
+  for(let i=0;i<arr.length-1;i++){
+    for(let j=0;j<arr.length-1-i;j++){
+      if(arr[j]>arr[j+1]){
+        [arr[j+1],arr[j]]=[arr[j],arr[j+1]]
+      }
+    }
+  }
+return arr
+}
+console.log('打印冒泡排序',bubbleSort2(NewArrTest));
+
 //实现选择排序
 const selectSort=(arr)=>{
   for (let index = 0; index < arr.length-1; index++) {
@@ -67,7 +90,20 @@ const selectSort=(arr)=>{
   }
   return arr
 }
-console.log('打印选择排序',selectSort(NewArrTest));
+const selectSort2=(arr)=>{
+  for(let i=0;i<arr.length-1;i++){
+    let minIndex=i
+    for(let j=i+1;j<arr.length;j++){
+      if(arr[j]<arr[minIndex]){
+        minIndex=j
+      }
+    }
+    [arr[minIndex],arr[i]]=[arr[i],arr[minIndex]]
+  }
+return arr
+
+}
+console.log('打印选择排序',selectSort2(NewArrTest));
 
 </script>
 </html>

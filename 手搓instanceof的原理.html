@@ -10,21 +10,21 @@
 </body>
 <script>
 //手写instanceof
-function myInstanceof(obj,construct){
-          while(obj){
-            if(obj.__proto__===construct.prototype){
-                return true
-            }else{
-                obj=obj.__proto__
-            }
-          }
-          return false
+function myInstanceof2(obj,constructor){
+    while(obj!==null){
+        if(obj.__proto__===constructor.prototype){
+            return true
+        }else{
+            obj=obj.__proto__
         }
-    const arr={
+    }
+    return false
+}        
+const arr={
         name:'名字',
         age:'22'
     }
-console.log('测试手写instanceof',myInstanceof(arr,Array));//true
+console.log('测试手写instanceof',myInstanceof2(arr,Object));//true
     
 </script>
 </html>

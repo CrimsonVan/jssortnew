@@ -23,7 +23,6 @@
         if(obj instanceof Object !== true){
               return obj
         }
-
         if(obj instanceof Array ){
            let copy = []
             for(let i=0;i<obj.length;i++){
@@ -31,15 +30,32 @@
             }
           return copy
         }
-
+        
         let copy ={}
         for(let key in obj){
             copy[key]=deepClone1(obj[key])
         }
-        
         return copy
     }
-    const diguiCopyObj= deepClone1(obj1)
+    const deepClone2=(obj)=>{
+        if(obj instanceof Object!==true){
+            return obj
+        }
+        if(obj instanceof Array){
+            let arr=[]
+            for(let item of obj){
+                arr.push(deepClone2(item))
+            }
+            return arr
+        }
+
+        let result={}
+        for(let key in obj){
+            result[key]=deepClone2(obj[key])
+        }
+        return result
+    }
+    const diguiCopyObj= deepClone2(obj1)
     //深拷贝2
     const jsonCopyObj=JSON.parse(JSON.stringify(obj1))
     //浅拷贝1

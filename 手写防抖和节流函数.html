@@ -16,11 +16,29 @@
         return function(){          
           clearTimeout(timeout)
           timeout=setTimeout(()=>{
-              func.apply(this)
+              func()
           },wait)
         }
     }
-   const searchFunc=function(){
+    function debounce3(func,wait){
+      let t
+      return function(){
+        clearTimeout(t)
+        t=setTimeout(()=>{
+          func()
+        },wait)
+      }
+    }
+    function debounce4(func,wait){
+      let t
+      return function(){
+        clearTimeout(t)
+        t=setTimeout(()=>{
+           func()
+        },wait)
+      }
+    }
+    const searchFunc=function(){
     let search =document.querySelector('.search')
     console.log('测试防抖只打印最后一次搜索内容',search.value);
    } 
@@ -38,9 +56,37 @@
       }
     }
    }
-   
-   const myDebounce=debounce(searchFunc,2000)
-   const myThrottle=Throttle(searchFunc,3000)
-   document.querySelector('.search').addEventListener('input',myThrottle)
+   function Throttle2(func,wait){
+     let t
+     return function(){
+      if(!t){
+          t=true
+           func()
+          setTimeout(()=>{
+       t=false
+      },wait)
+      }
+     }
+   }
+   function Throttle3(func,wait){
+    let t
+    return function(){
+      if(!t){
+        t=true
+        func()
+        setTimeout(()=>{
+           t=false
+        },wait)
+      }
+    }
+   }
+   const myDebounce=debounce3(searchFunc,2000)
+   const myThrottle=Throttle2(searchFunc,2000)
+   document.querySelector('.search').addEventListener('input',myDebounce)
+   Array.prototype.reduce=function(func){
+
+}
+let arr=[1,2,3]
+console.log([1,2,3].reduce(function(pre,cur){return pre + cur},0));
 </script>
 </html>

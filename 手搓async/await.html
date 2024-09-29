@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+  const getData1 = () => new Promise(resolve => setTimeout(() => { resolve('data1111') }, 2000))
+  // const getData1 = () => console.log('测试') ;
+  
+  const getData2 = () => new Promise(resolve => setTimeout(() => { resolve('data2222') }, 1000))
+  const getData3 = () => new Promise(resolve => setTimeout(() => { resolve('data3333') }, 500))
+
+function* testG () {
+   const data1 = yield getData1();
+   console.log('data1: ',data1);
+   const data2 = yield getData2();
+   console.log('data2: ', data2);
+   const data3 = yield getData3();
+   console.log('data3: ', data3);
+ }
+ 
+//手搓async/await
+function asyncToGenerator (genFunc) {
+  return function () {
+    const gen = genFunc.apply(this, arguments);
+    return new Promise((resolve, reject) => {
+      function step (key, arg) {
+        let generatorResult;
+        try {
+          generatorResult = gen[key](arg);
+        } catch (err) {
+          return reject(err);
+        }
+        const { value, done } = generatorResult;
+        if (done) {
+            console.log('done成功了');
+        } else {
+          return value.then(val => {
+            step("next", val)
+          }, err => {
+            step("throw", err)
+          })
+        }
+      }
+      step("next")
+    })
+  }
+}
+var gen = asyncToGenerator(testG)
+gen().then(res => console.log('成功'))
+
+    </script>
+</body>
+</html>

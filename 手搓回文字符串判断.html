@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const str1='00s132231s00'
+        function isHuiwen(str){
+            if(typeof str !=="string"){
+                return false
+            }
+            let length=str.length
+            let times=Math.floor(length/2)
+            for(let i=0;i<times;i++){
+                if(str[i]!==str[length-1-i]){
+                    return false
+                }
+            }
+            return true
+        }
+        console.log('测试str遍历',str1[str1.length-1],Math.floor(str1.length/2));
+        console.log('测试奇数回文字符串',isHuiwen(str1));
+        
+    </script>
+</body>
+</html>

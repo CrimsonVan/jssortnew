@@ -9,25 +9,28 @@
     
 </body>
 <script>
-    function curry2(func){
+
+    function curry6(func){
         let length=func.length
         return function curried(...args){
             if(args.length>=length){
-               return func.apply(this,args)
+                func(...args)
             }else{
                 return function(...args2){
-                   return curried.apply(this,args.concat(args2))
+                    return curried(...(args.concat(args2)))
                 }
             }
 
         }
     }
-    const plus=function(a,b,c){
-          console.log('打印plus',a+b+c);
-          
+    const plus=function(a,b,c,d){
+          console.log('打印plus',a+b+c+d);   
     }
-    curriedPlus=curry2(plus)
-    curriedPlus(1)(1)(1)
+    curriedPlus=curry6(plus)
+    curriedPlus(1,1,1)(1)
+    curriedPlus(1,1)(1)(1)
+    curriedPlus(1)(1,1,1)
+
   
 
 </script>

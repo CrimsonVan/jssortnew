@@ -8,20 +8,27 @@
 <body>
     <script>
 const person={
-    name:'lilei'
+         name:'lilei'
 }
 function testFunc(a,b){
-
-    console.log(`测试手写${a}方法成功${b}`,this);
-
+         console.log(`测试手写${a}方法成功${b}`,this);
 }
 Function.prototype.mycall=function(obj,...args){
          obj.func=this
          obj.func(...args)
 }
+Function.prototype.mycall2=function(obj,...args){
+    obj.func=this
+    obj.func(...args)
+
+}
 Function.prototype.myapply=function(obj,args){
          obj.func=this
          obj.func(...args)
+}
+Function.prototype.myapply2=function(obj,args){
+    obj.func=this
+    obj.func(...args)
 }
 Function.prototype.mybind=function(obj){
         obj.func=this
@@ -29,9 +36,29 @@ Function.prototype.mybind=function(obj){
          obj.func(...args)
         }
 }
-testFunc.mycall(person,'call','嘿嘿')
-testFunc.myapply(person,['apply','嘿嘿'])
-testFunc.mybind(person)('bind','嘿嘿')
+Function.prototype.mybind2=function(obj){
+     obj.func=this
+return function(...args){
+    return obj.func(...args)
+}
+}
+Function.prototype.mycall3=function(obj,...args){
+    obj.func=this
+    obj.func(...args)
+}
+Function.prototype.myapply3=function(obj,args){
+    obj.func=this
+    obj.func(...args)
+}
+Function.prototype.mybind3=function(obj){
+    obj.func=this
+    return function(...args){
+     obj.func(...args)
+    }
+}
+testFunc.mycall2(person,'call','嘿嘿')
+testFunc.myapply2(person,['apply','嘿嘿'])
+testFunc.mybind3(person)('bind','嘿嘿')
 
 
 
