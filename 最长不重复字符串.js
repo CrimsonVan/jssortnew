@@ -34,3 +34,8 @@ function longStr2(s) {
   return max;
 }
 console.log("测试第二种最长字符串长度为", longStr2(str2));
+function testFunc() {
+  console.log("打印testFunc");
+}
+
+console.log("打印typeof", typeof testFunc);
