@@ -1,43 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <button class="connect">进入群聊</button>
-    <div class="chatRoomSpace" style="height: 300px;width: 200px;;overflow-y: auto;border: 1px solid #ccc;"></div>
-    <div ><input class="input" type="text"><button class="send">发送</button></div>
-    
-</body>
-<script>
-let room=document.querySelector('.chatRoomSpace')
-let inp=document.querySelector('.input')
-let ws
-document.querySelector('.connect').addEventListener('click',()=>{
-    ws = new WebSocket("ws://localhost:9998")
-    ws.onopen = () => {
+    <div
+      class="chatRoomSpace"
+      style="
+        height: 300px;
+        width: 200px;
+        overflow-y: auto;
+        border: 1px solid #ccc;
+      "
+    ></div>
+    <div>
+      <input class="input" type="text" /><button class="send">发送</button>
+    </div>
+  </body>
+  <script>
+    let room = document.querySelector(".chatRoomSpace");
+    let inp = document.querySelector(".input");
+    let ws;
+    document.querySelector(".connect").addEventListener("click", () => {
+      ws = new WebSocket("ws://localhost:9998");
+      ws.onopen = () => {
         console.log("websocket链接成功");
+      };
 
-      }
-    ws.onclose=()=>{
-        console.log('连接失败了');
-        
-    }  
-    ws.onmessage=(msg)=>{
-     console.log('服务端传给客户端数据为：',msg.data);
-     let dv=document.createElement('div')
-     dv.innerHTML=msg.data
-     room.appendChild(dv)
-    }
-})
-document.querySelector('.send').addEventListener('click',()=>{
-    // 客户端发送数据给服务端
-    ws.send(''+inp.value)
-    console.log('打印input',inp.value);
-    inp.value=''
-})
-
-</script>
+      ws.onclose = () => {
+        console.log("连接失败了");
+      };
+      ws.onmessage = (msg) => {
+        console.log("服务端传给客户端数据为：", msg.data);
+        let dv = document.createElement("div");
+        dv.innerHTML = msg.data;
+        room.appendChild(dv);
+      };
+    });
+    document.querySelector(".send").addEventListener("click", () => {
+      // 客户端发送数据给服务端
+      ws.send("" + inp.value);
+      console.log("打印input", inp.value);
+      inp.value = "";
+    });
+  </script>
 </html>
